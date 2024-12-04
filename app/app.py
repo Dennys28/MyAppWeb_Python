@@ -1,11 +1,13 @@
 from flask import Flask
+import socket
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "<h1>Aplicacion de prueba de python</h1>"
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    return f"<h1>Hola, Dennys --- </h1><p>IP de la instancia: {ip_address}</p>"
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
- 
